@@ -1,19 +1,26 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
 <div class="container mt-4">
-    <h2 class="mb-4">Tambah Jadwal Penyiraman</h2>
-    <form method="POST" action="{{ route('plant_waterings.store') }}">
+    <h3 class="mb-4">Tambah Jadwal Penyiraman</h3>
+    
+    <form action="{{ route('plant_waterings.store') }}" method="POST">
         @csrf
-        <div class="mb-3">
-            <label for="time" class="form-label">Waktu Penyiraman</label>
-            <input type="text" name="time" id="time" class="form-control" required>
+        <div class="form-group mb-3">
+            <label for="time">Waktu Penyiraman</label>
+            <input type="time" id="time" name="time" class="form-control" required>
         </div>
-        <div class="mb-3">
-            <label for="status" class="form-label">Status</label>
-            <input type="text" name="status" id="status" class="form-control" required>
+        <div class="form-group mb-3">
+            <label for="status">Status</label>
+            <select id="status" name="status" class="form-control">
+                <option value="active">Aktif</option>
+                <option value="inactive">Nonaktif</option>
+            </select>
         </div>
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-success">Simpan</button>
+        <a href="{{ route('dashboard') }}" class="btn btn-secondary">Kembali ke Dashboard</a>
     </form>
 </div>
+
 @endsection

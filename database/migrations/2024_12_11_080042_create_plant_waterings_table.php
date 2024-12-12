@@ -10,9 +10,9 @@ class CreatePlantWateringsTable extends Migration
     {
         Schema::create('plant_waterings', function (Blueprint $table) {
             $table->id();
-            $table->string('time');    // Kolom untuk waktu penyiraman
+            $table->string('time'); // Kolom untuk waktu penyiraman
             $table->string('status'); // Kolom untuk status penyiraman
-            $table->timestamps();     // Kolom created_at dan updated_at
+            $table->timestamps();
         });
     }
 

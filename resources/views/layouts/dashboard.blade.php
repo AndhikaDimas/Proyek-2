@@ -43,7 +43,7 @@
     <div class="header d-flex justify-content-between align-items-center mb-4">
         <h1 class="ms-3">Plant Waterer</h1>
         <div class="me-3">
-            <button class="btn btn-primary">+ Jadwal Penyiraman</button>
+            {{-- <button class="btn btn-primary">+ Jadwal Penyiraman</button> --}}
             <span class="ms-2">
                 <i class="bi bi-bell-fill"></i>
             </span>

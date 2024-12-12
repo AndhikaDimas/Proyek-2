@@ -1,20 +1,30 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
 <div class="container mt-4">
-    <h2 class="mb-4">Edit Jadwal Penyiraman</h2>
-    <form method="POST" action="{{ route('plant_waterings.update', $plantWatering->id) }}">
+    <h3 class="mb-4">Edit Jadwal Penyiraman</h3>
+    
+    <form action="{{ route('plant_waterings.update', $plantWatering->id) }}" method="POST">
         @csrf
-        @method('PUT')
-        <div class="mb-3">
-            <label for="time" class="form-label">Waktu Penyiraman</label>
-            <input type="text" name="time" id="time" value="{{ $plantWatering->time }}" class="form-control" required>
+        @method('PUT') <!-- Metode untuk mengupdate data -->
+        
+        <div class="form-group mb-3">
+            <label for="time">Waktu Penyiraman</label>
+            <input type="time" id="time" name="time" class="form-control" value="{{ old('time', $plantWatering->time) }}" required>
         </div>
-        <div class="mb-3">
-            <label for="status" class="form-label">Status</label>
-            <input type="text" name="status" id="status" value="{{ $plantWatering->status }}" class="form-control" required>
+
+        <div class="form-group mb-3">
+            <label for="status">Status</label>
+            <select id="status" name="status" class="form-control">
+                <option value="active" {{ old('status', $plantWatering->status) === 'active' ? 'selected' : '' }}>Aktif</option>
+                <option value="inactive" {{ old('status', $plantWatering->status) === 'inactive' ? 'selected' : '' }}>Nonaktif</option>
+            </select>
         </div>
+
         <button type="submit" class="btn btn-primary">Update</button>
+        <a href="{{ route('dashboard') }}" class="btn btn-secondary">Kembali ke Dashboard</a>
     </form>
 </div>
+
 @endsection
